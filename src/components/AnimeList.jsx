@@ -16,17 +16,18 @@ const AnimeList = () => {
 
     fetchData();
   }, [username]);
-
+  
   return (
-    <div>
-      {animeList.map((anime, index) => (
-        <div key={index}>
-          <h2>{anime.node.title}</h2>
-          <p>Score: {anime.list_status ? anime.list_status.score : 'N/A'}</p>
-        </div>
-      ))}
+    <div className="container anime-list">
+        {animeList.map((anime, index) => (
+            <div key={index} className="card">
+                <img src={anime.node.main_picture.large} alt={anime.node.title} className="anime-image" />
+                <h2 className="title">{anime.node.title}</h2>
+                <p className="score">Score: {anime.list_status ? anime.list_status.score : 'N/A'}</p>
+            </div>
+                ))}
     </div>
-  );
+);
 };
 
 export default AnimeList;
